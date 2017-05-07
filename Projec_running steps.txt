@@ -1,0 +1,60 @@
+Software
+--------------
+1.JDK1.8
+2.Eclipse neon or higher
+3.Tomcat 8.0
+4.H2 database 1.4.194
+
+Steps:
+-------------------
+1.download the shopping cart backend and shopping cart front end
+2.unzip it
+3.open a new workspace in eclipse
+4.import shoppingcart backend and front end in eclipse as maven existing project
+5.add the JDK as system library
+6.add the depoloyment assembly
+(RC-->project>properties->Ddepolyment assembly->Add->java build path enteries->maven dependencies->apply-Ok)
+7.change the password in cartBackeEnd for H2 database
+(src->main->java->com.niit.shoppingcart.config->ApplicationContextConfig,java--dataSource.setPassword("");)
+8.change the h2 databse version in pom.xml according to your H2 databse version 
+Note:
+--------
+shopping cart back-end-->src->main->java->com.niit.shoppingcart.model-->user.java
+remove line 55(@Email)
+
+9.shoppingcart cabkend--maven-clean
+10.shoppingcart cabkend--maven-install
+11.shoppingcart frontend--maven-clean
+12.shoppingcart frontend--maven-install
+//optinal
+13.If maven clean or install is failing
+a.C:\Users\yourname\.m2\repository and delete all content
+14.first run your H2 database
+15.run shoppingcart front end on tomcat server after adding tomcat8.0
+
+After running the application
+
+16.shoppingcart front end-src-main-webapp-webinf-spring-security.xml
+uncomment line 10-22
+and comment 25-33
+17.You will see automatically all table is created in H2 database
+18.register two users
+a.tale the id of both user
+b.goto Authorities table
+c.make two entry with userId
+with authority
+Eg.ROLE_ADMIN,ROLE_USER
+19.change the enabled column as True for new user in in Users table
+
+
+
+
+
+
+
+
+
+
+
+
+
